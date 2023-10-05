@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/app/servico/login.service';
-import { Users } from './interface/users';
+import { Users } from '../../../interface/users';
 
 
 
@@ -23,7 +23,7 @@ export class LoginComponent {
   )
   {
     this.registerForm = this.fb.group({      
-      username: [''],      
+      userName: [''],      
       password: ['']
     });
   }
@@ -37,18 +37,13 @@ export class LoginComponent {
   }
 
   
-  Logon() {
-    debugger
+  Logon() {    
     this.user = this.registerForm.value;
     this.loginService.login(this.user.userName, this.user.password)
     .subscribe(
-      () => {
-        debugger
+      () => {        
         this.router.navigate(['/home']);
       },
     )
-    
-   
   }
-
 }

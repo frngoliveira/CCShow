@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './app/features/user/home/home.component';
 import { AppComponent } from './app.component';
@@ -25,6 +25,7 @@ import { UpdateComponent } from './app/features/user/home/update/update.componen
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     NgbModule,
     AppRoutingModule
   ],

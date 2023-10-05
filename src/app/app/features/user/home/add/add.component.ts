@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Users } from '../../login/interface/users';
+import { Users } from 'src/app/app/interface/users';
 import { AddService } from 'src/app/app/servico/add.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class AddComponent {
   ) 
   {
     this.registerForm = this.fb.group({      
-      username: [''],      
+      userName: [''],      
       password: [''],
       role: ['']
     });
@@ -34,6 +34,7 @@ export class AddComponent {
   }
 
   salvar() {
+    debugger
     this.user = Object.assign({}, this.registerForm.value);
     this.addService
       .save(this.user)
@@ -41,7 +42,4 @@ export class AddComponent {
         this.router.navigate(['/home']);
       });
   }
-
-
-
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Users } from '../features/user/login/interface/users';
+import { Users } from '../interface/users';
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,10 @@ export class AddService {
       'Content-Type': 'application/json',
     });
     return this.http.post<Users>(
-      this.baseUrl + '/Post',
+      this.baseUrl + '/Create',
       user, {headers: headers}
     );
   }
+
+  
 }
