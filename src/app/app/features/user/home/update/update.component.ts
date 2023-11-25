@@ -1,24 +1,29 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Users } from 'src/app/app/interface/users';
-import { UpdateService } from 'src/app/app/servico/update.service';
+import { findIndex, toArray } from 'rxjs';
+import { Users } from 'src/app/app/features/interface/users';
+import { UpdateService } from 'src/app/app/features/servico/update.service';
 
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
   styleUrls: ['./update.component.css']
 })
-export class UpdateComponent {
 
+export class UpdateComponent {
+  
   registerForm!: FormGroup;
+  userName: string = '';
+  password: string = '';
+  role: string = '';
   user!: Users;
 
   constructor(    
     public router: Router,
     public route: ActivatedRoute,
     private fb: FormBuilder,
-    public updateService: UpdateService    
+    public updateService: UpdateService
   ) { }
 
   ngOnInit() {    
@@ -26,11 +31,12 @@ export class UpdateComponent {
       this.router.navigate(['/login']);
     }
     this.loadUser ();
-    //this.validation()
+    this.validation()
   }
 
   validation() {
-    this.registerForm = this.fb.group({      
+    this.registerForm = this.fb.group({  
+      id: [this.route.snapshot.paramMap.get('id')],
       userName: [''],
       password: [''],
       role: ['']
@@ -39,12 +45,23 @@ export class UpdateComponent {
 
   loadUser ()
   {
-    let id = this.route.snapshot.paramMap.get('id');    
+    let id = this.route.snapshot.paramMap.get('id');
     this.updateService.getUserById(Number(id))
-      .subscribe((result: Users) =>
+      .subscribe((users: Users[]) =>
       {  
-        debugger      
-        this.user = Object.assign({}, result);
+         this.userName = users[0].userName;
+         this.password = users[0].password;
+         this.role = users[0].role;
       })
   }
+
+  update() {
+    this.user = Object.assign({ }, this.registerForm.value);
+    this.updateService
+      .update(this.user)
+      .subscribe( () => {
+        this.router.navigate(['/home']);
+      });
+  }
+
 }

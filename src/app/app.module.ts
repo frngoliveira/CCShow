@@ -9,6 +9,8 @@ import { LoginComponent } from './app/features/user/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddComponent } from './app/features/user/home/add/add.component';
 import { UpdateComponent } from './app/features/user/home/update/update.component';
+import { ModalComponent } from './app/shared/componentes/modal/modal.component';
+import { FormatCpfComponent } from './app/shared/componentes/directives/format-cpf/format-cpf.component';
 
 
 
@@ -19,7 +21,9 @@ import { UpdateComponent } from './app/features/user/home/update/update.componen
     AppComponent,
     LoginComponent,
     AddComponent,
-    UpdateComponent    
+    UpdateComponent,
+    ModalComponent,
+    FormatCpfComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Users } from 'src/app/app/interface/users';
-import { AddService } from 'src/app/app/servico/add.service';
+import { AddService } from 'src/app/app/features/servico/add.service';
+import { Users } from 'src/app/app/features/interface/users';
 
 @Component({
   selector: 'app-add',

@@ -19,10 +19,15 @@
                 <td>{{user.role}}</td>
                 <td>
                     <input type="button" class="btn btn-primary" [routerLink]= "['/update', user.id]" value="Editar">
-                    <input type="button" style="margin-left: 5px;" class="btn btn-danger" value="Excluir">
+                    <input type="button" style="margin-left: 5px;" (click)="abrirModal()" class="btn btn-danger" value="Excluir">
                 </td>
             </tr>            
         </tbody>
     </table>
 </div>
-
+<app-modal [isOpen]="mostrarModal">
+    <!-- Conteúdo do modal -->
+    <h2>Meu Modal</h2>
+    <p>Conteúdo do modal aqui.</p>
+    <button (click)="fecharModal()">X</button>
+  </app-modal>

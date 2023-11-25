@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/app/servico/login.service';
-import { Users } from '../../../interface/users';
+import { LoginService } from 'src/app/app/features/servico/login.service';
+import { Users } from 'src/app/app/features/interface/users';
+
 
 
 
